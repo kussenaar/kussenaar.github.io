@@ -1,39 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Color Selection Page</title>
+    <title>Quirky Facts in Dutch</title>
     <script>
-        function checkColor() {
-            // Get the selected color from the dropdown
-            var selectedColor = document.getElementById("colorDropdown").value;
-
-            // Check if the selected color is "blue" five times
-            if (selectedColor === "blue" || selectedColor === "Blue" || selectedColor === "BLUE") {
-                // Display "correct" if the selected color is "blue"
-                document.getElementById("result").textContent = "Correct";
+        var correctOrder = ["Vincent", "Lieve", "Dagmar", "Pascale", "Roos", "Jacinta", "Pauline", "Lisa", "Jules", "Madeleine"];
+        var selectedNames = [];
+        
+        function checkOrder() {
+            var dropdowns = document.querySelectorAll("select");
+            selectedNames = Array.from(dropdowns).map(function(dropdown) {
+                return dropdown.value;
+            });
+            
+            if (JSON.stringify(selectedNames) === JSON.stringify(correctOrder)) {
+                document.getElementById("result").textContent = "Correct!";
             } else {
-                // Display nothing if the selected color is not "blue"
-                document.getElementById("result").textContent = "";
+                document.getElementById("result").textContent = "Wrong!";
             }
         }
     </script>
 </head>
 <body>
-    <h1>The Color Selection Page</h1>
-    <p>The color is <span id="result"></span></p>
+    <h1>Quirky Facts in Dutch</h1>
 
-    <select id="colorDropdown" onchange="checkColor()">
-        <option value="">Select a color</option>
-        <option value="blue">Blue</option>
-        <option value="red">Red</option>
-        <option value="green">Green</option>
-        <option value="yellow">Yellow</option>
-        <option value="purple">Purple</option>
-    </select>
+    <p>"Ik verzamel miniatuurobjecten." 
+        <select onchange="checkOrder()">
+            <option value="">Select a name</option>
+            <option value="Vincent">Vincent</option>
+            <option value="Lieve">Lieve</option>
+            <option value="Dagmar">Dagmar</option>
+            <option value="Pascale">Pascale</option>
+            <option value="Roos">Roos</option>
+            <option value="Jacinta">Jacinta</option>
+            <option value="Pauline">Pauline</option>
+            <option value="Lisa">Lisa</option>
+            <option value="Jules">Jules</option>
+            <option value="Madeleine">Madeleine</option>
+        </select>
+    </p>
+    
+    <!-- Repeat the above code for each of the 10 quotes and dropdowns -->
+    
+    <!-- Example quote and dropdown -->
+    <p>"Ik houd van pindakaas." 
+        <select onchange="checkOrder()">
+            <option value="">Select a name</option>
+            <option value="Vincent">Vincent</option>
+            <option value="Lieve">Lieve</option>
+            <option value="Dagmar">Dagmar</option>
+            <option value="Pascale">Pascale</option>
+            <option value="Roos">Roos</option>
+            <option value="Jacinta">Jacinta</option>
+            <option value="Pauline">Pauline</option>
+            <option value="Lisa">Lisa</option>
+            <option value="Jules">Jules</option>
+            <option value="Madeleine">Madeleine</option>
+        </select>
+    </p>
 
-    <p>The color is <span id="result"></span></p>
-    <p>The color is <span id="result"></span></p>
-    <p>The color is <span id="result"></span></p>
-    <p>The color is <span id="result"></span></p>
+    <p id="result"></p>
 </body>
 </html>
