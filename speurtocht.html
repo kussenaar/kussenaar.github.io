@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Color Selection Page</title>
+    <script>
+        function checkColor() {
+            // Get the selected color from the dropdown
+            var selectedColor = document.getElementById("colorDropdown").value;
+
+            // Check if the selected color is "blue" five times
+            if (selectedColor === "blue" || selectedColor === "Blue" || selectedColor === "BLUE") {
+                // Display "correct" if the selected color is "blue"
+                document.getElementById("result").textContent = "Correct";
+            } else {
+                // Display nothing if the selected color is not "blue"
+                document.getElementById("result").textContent = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>The Color Selection Page</h1>
+    <p>The color is <span id="result"></span></p>
+
+    <select id="colorDropdown" onchange="checkColor()">
+        <option value="">Select a color</option>
+        <option value="blue">Blue</option>
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="yellow">Yellow</option>
+        <option value="purple">Purple</option>
+    </select>
+
+    <p>The color is <span id="result"></span></p>
+    <p>The color is <span id="result"></span></p>
+    <p>The color is <span id="result"></span></p>
+    <p>The color is <span id="result"></span></p>
+</body>
+</html>
