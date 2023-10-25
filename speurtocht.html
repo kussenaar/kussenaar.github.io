@@ -3,16 +3,33 @@
 <head>
     <title>Wie is het?</title>
     <script>
-        var correctOrder = ["Vincent", "Lieve", "Dagmar", "Pascale", "Roos", "Jacinta", "Pauline", "Lisa", "Jules", "Madeleine"];
-        var selectedNames = [];
-        
-        function checkOrder() {
-            var dropdowns = document.querySelectorAll("select");
-            selectedNames = Array.from(dropdowns).map(function(dropdown) {
-                return dropdown.value;
-            });
-            
-            if (JSON.stringify(selectedNames) === JSON.stringify(correctOrder)) {
+        var correctMatches = [
+            { quote: "Ik verzamel miniatuurobjecten.", name: "Vincent" },
+            { quote: "Ik houd van pindakaas.", name: "Vincent" },
+            { quote: "Ik heb een kat", name: "Vincent" },
+            { quote: "Ik haat mijn kinderen", name: "Vincent" },
+            { quote: "Ik slaap met mijn ogen open", name: "Vincent" },
+            { quote: "Ik gebruik mayonaise als shampoo", name: "Vincent" },
+            { quote: "Ik eet graag gras", name: "Vincent" },
+            { quote: "Ik heb een groene hond", name: "Vincent" },
+            { quote: "Ik ben opgegroeid in Atlantis.", name: "Lieve" },
+        ];
+
+        function checkMatches() {
+            var matchResults = [];
+            for (var i = 0; i < correctMatches.length; i++) {
+                var selectElement = document.getElementById("dropdown_" + i);
+                var selectedName = selectElement.value;
+                var correctName = correctMatches[i].name;
+
+                if (selectedName === correctName) {
+                    matchResults.push(true);
+                } else {
+                    matchResults.push(false);
+                }
+            }
+
+            if (matchResults.every(Boolean)) {
                 document.getElementById("result").textContent = "Correct!";
             } else {
                 document.getElementById("result").textContent = "Wrong!";
@@ -166,5 +183,7 @@
 
 
     <p id="result"></p>
+
+    <button onclick="checkMatches()">Check Matches</button>
 </body>
 </html>
