@@ -174,34 +174,33 @@
 
     <!-- Continue adding quotes and dropdowns with corresponding IDs -->
 
-    <p id="result"></p>
+ <p id="result"></p>
 
     <button onclick="checkMatches()">Check Matches</button>
 
     <script>
-        var correctMatches = [
-            { quote: "Ik verzamel miniatuurobjecten.", name: "Lieve" },
-            { quote: "Ik ga volgend jaar voor het eerst op wintersport.", name: "Dagmar" },
-            { quote: "Ik heb een poppenverzameling: ruim 60 klederdracht poppen, elk afkomstig uit een ander land.", name: "Pauline" },
-            { quote: "Ik heb een Teletubbie ontmoet. De eerste acteur die Tinkie-Winkie heeft gespeeld.", name: "Jules" },
-            { quote: "De favoriete gezamenlijke hobby van mij en mijn partner is fossielen zoeken.", name: "Nadine" },
-            { quote: "Ik heb ooit met een motorbootje een meterslange krokodil aangevaren.", name: "Pascale" },
-            { quote: "Ik heb voor het koninklijk huis gewerkt.", name: "Jacinta" },
-            { quote: "Mijn lievelingsknuffel vroeger was een grote witte zeehond: die nam ik overal mee naartoe, ook op reis. Vonden mijn ouders zeer onhandig.", name: "Mawgosia" },
-            { quote: "Ik ben gezakt voor mijn zwemdiploma C.", name: "Vincent" },
-            { quote: "Ik verzamel miniatuurobjecten.", name: "Lieve" },
-            { quote: "Ik ben een echt Philips kindje.", name: "Ineke" },
-            // Add more quotes and names here
+        var dropdownIds = [
+            "dropdown_0",
+            "dropdown_1",
+            "dropdown_2",
+            "dropdown_3",
+            "dropdown_4",
+            "dropdown_5",
+            "dropdown_6",
+            "dropdown_7",
+            "dropdown_8",
+            "dropdown_9"
+            // Add more dropdown IDs if needed
         ];
 
         function checkMatches() {
             var matchResults = { correct: 0, wrong: 0 };
             var hasInputError = false;
 
-            for (var i = 0; i < correctMatches.length; i++) {
-                var selectElement = document.getElementById("dropdown_" + i);
+            for (var i = 0; i < dropdownIds.length; i++) {
+                var selectElement = document.getElementById(dropdownIds[i]);
                 var selectedName = selectElement.value;
-                var correctName = correctMatches[i].name;
+                var correctName = getCorrectName(i); // Get the correct name using the index
 
                 if (selectedName === correctName) {
                     matchResults.correct++;
@@ -219,10 +218,31 @@
             } else {
                 document.getElementById("result").textContent = "Correct: " + matchResults.correct + " | Fout: " + matchResults.wrong;
 
-                if (matchResults.correct === correctMatches.length) {
+                if (matchResults.correct === dropdownIds.length) {
                     document.getElementById("result").textContent = "De clue is: 1";
                 }
             }
+        }
+
+        function getCorrectName(index) {
+            // Define how you want to get the correct name based on the dropdown index
+            // You can use a switch statement or another method here
+            // For simplicity, you can keep your correct names in an array as before
+            var correctNames = [
+                "Jacintat",
+                "Vincent",
+                "Mawgosia",
+                "Pascale",
+                "Nadine",
+                "Jules",
+                "Pauline",
+                "Lieve",
+                "Dagmar",
+                "Ineke"
+                // Add more correct names if needed
+            ];
+
+            return correctNames[index];
         }
     </script>
 </body>
