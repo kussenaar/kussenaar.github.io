@@ -194,23 +194,26 @@
             // Add more quotes and names here
         ];
 
-        function checkMatches() {
-            var matchResults = { correct: 0, wrong: 0 };
+    function checkMatches() {
+        var matchResults = { correct: 0, wrong: 0 };
 
-            for (var i = 0; i < correctMatches.length; i++) {
-                var selectElement = document.getElementById("dropdown_" + i);
-                var selectedName = selectElement.value;
-                var correctName = correctMatches[i].name;
+        for (var i = 0; i < correctMatches.length; i++) {
+            var selectElement = document.getElementById("dropdown_" + i);
+            var selectedName = selectElement.value;
+            var correctName = correctMatches[i].name;
 
-                if (selectedName === correctName) {
-                    matchResults.correct++;
-                } else {
-                    matchResults.wrong++;
-                }
+            if (selectedName === correctName) {
+                matchResults.correct++;
+            } else {
+                matchResults.wrong++;
             }
-
-            document.getElementById("result").textContent = "Correct: " + matchResults.correct + " | Fout: " + matchResults.wrong;
         }
-    </script>
-</body>
-</html>
+
+        document.getElementById("result").textContent = "Correct: " + matchResults.correct + " | Fout: " + matchResults.wrong;
+
+        if (matchResults.correct === correctMatches.length) {
+            // All answers are correct
+            document.getElementById("result").textContent = "De clue is: 1";
+        }
+    }
+</script>
